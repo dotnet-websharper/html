@@ -37,6 +37,7 @@
     <Compile Include="Html.fs" />
     <Compile Include="Tags.fs" />
     <Compile Include="Attributes.fs" />
+    <Compile Include="Sitelets.fsi" />
     <Compile Include="Sitelets.fs" />
   </ItemGroup>
   <!-- F# targets -->

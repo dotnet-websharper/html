@@ -23,6 +23,8 @@ module Content =
     module XS = IntelliFactory.Xml.SimpleXml
     module XT = IntelliFactory.Xml.Templating
 
+    type HtmlElement = Html.Element
+
     type Hole<'T> =
         | SH of ('T -> Async<string>)
         | EH of ('T -> Async<seq<Web.INode>>)
@@ -32,26 +34,6 @@ module Content =
             extra : IDictionary<string, XS.INode>
             value : 'T
         }
-
-//    let rec toXml (node: H.Element) : XS.INode =
-//        match node with
-//        | H.TagContent x ->
-//            let attrs = Dictionary()
-//            for attr in x.Attributes do
-//                attrs.[XS.Name.Create attr.Name] <- attr.Value
-//            XS.ElementNode {
-//                Name = XS.Name.Create x.Name
-//                Children = Seq.toArray (Seq.map toXml x.Contents) :> seq<_>
-//                Attributes = attrs
-//            } :> _
-//        | H.TextContent x -> XS.TextNode x :> _
-//        | H.VerbatimContent x -> XS.CDataNode x :> _
-//        | H.CommentContent x -> XS.TextNode "" :> _
-//
-//    let toXmlElement (node: H.Element) : option<XS.Element> =
-//        match (toXml node).Node with
-//        | XS.ElementNode n -> Some n
-//        | _ -> None
 
     [<Literal>]
     let SCRIPTS = "SCRIPTS"
@@ -253,21 +235,6 @@ module Content =
             Template(getBasicTemplate, getPageTemplate, Map.empty, Queue())
 
         new (path) = Template(path, Template.WhenChanged)
-
-//        static member FromHtmlElement (rootElement: H.Element) =
-//            let getFragmentTemplate holes =
-//                let f = (basicTemplate holes).ParseNodes [(toXml rootElement).Node]
-//                fun _ _ -> f
-//            let getPageTemplate holes =
-//                let f =
-//                    match toXmlElement rootElement with
-//                    | Some e -> (pageTemplate holes).ParseElement e
-//                    | None -> failwith "Template.FromHtmlElement: must pass an element, not a CData or Text node"
-//                fun _ _ -> f
-//            let controls = Queue()
-//            rootElement.CollectAnnotations()
-//            |> Seq.iter controls.Enqueue
-//            Template<'T>(getFragmentTemplate, getPageTemplate, Map.empty, controls)
 
         member this.With(name: string, f: Func<'T,string>) =
             Template(getBasicTemplate, getPageTemplate, Map.add name (SH (async.Return << f.Invoke)) holes, controls)
