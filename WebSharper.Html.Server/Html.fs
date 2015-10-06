@@ -69,10 +69,14 @@ module Html =
         | TextContent of string
         | VerbatimContent of string
         | CommentContent of string
+        | INodeContent of INode
 
         interface INode with
 
-            member this.IsAttribute = false
+            member this.IsAttribute =
+                match this with
+                | INodeContent n -> n.IsAttribute
+                | _ -> false
 
             member this.Requires =
                 match this with
@@ -84,6 +88,7 @@ module Html =
                         t.Contents |> Seq.collect (fun x -> x.Requires)
                         t.Attributes |> Seq.collect (fun x -> x.Requires)
                     |]
+                | INodeContent n -> n.Requires
                 | _ -> Seq.empty
 
             member this.Write(meta, w) =
@@ -129,11 +134,13 @@ module Html =
                     comment.Replace("--", " - - ")
                     |> w.Write
                     w.WriteLine "-->"
+                | INodeContent n -> n.Write(meta, w)
 
             member this.Encode(meta, json) =
                 match this with
                 | TagContent element ->
                     element.Contents |> List.collect (fun e -> e.Encode(meta, json))
+                | INodeContent n -> n.Encode(meta, json)
                 | _ -> []
 
     /// Constructs a new HTML element.
@@ -164,6 +171,7 @@ module Html =
                 Contents = el.Contents @ newContent
                 Annotation = el.Annotation
             }
+        | INodeContent _
         | VerbatimContent _
         | TextContent _
         | CommentContent _ ->
@@ -184,6 +192,7 @@ module Html =
         | TagContent e ->
             { e with Annotation = Some x }
             |> TagContent
+        | INodeContent _
         | VerbatimContent _
         | TextContent _
         | CommentContent _ -> e
