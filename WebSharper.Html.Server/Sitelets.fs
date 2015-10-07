@@ -229,9 +229,13 @@ module Content =
                 else
                     pathSpec
             let getBasicTemplate holes =
-                memoize (fun root -> getTemplate freq (path root) (basicTemplate holes).ParseFragmentFile)
+                memoize (fun root ->
+                    let t = basicTemplate holes
+                    getTemplate freq (path root) (fun f -> t.ParseFragmentFile(f, true)))
             let getPageTemplate holes =
-                memoize (fun root -> getTemplate freq (path root) (pageTemplate holes).Parse)
+                memoize (fun root ->
+                    let t = pageTemplate holes
+                    getTemplate freq (path root) (fun f -> t.Parse(f, true)))
             Template(getBasicTemplate, getPageTemplate, Map.empty, Queue())
 
         new (path) = Template(path, Template.WhenChanged)

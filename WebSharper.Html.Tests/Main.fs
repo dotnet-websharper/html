@@ -22,9 +22,11 @@ module Site =
             .With("title", fun t -> t.title)
             .With("body", fun t -> t.body)
 
-    let Body =
+    let Body (ctx: Context<_>) =
         [
-            H1 [Text "WebSharper.Html Tests"]
+            (try
+                Div (Content.Template<unit>("~/fragment.html").Run((), root = ctx.RootFolder))
+             with e -> Div [Text (sprintf "%A" e)])
             Div [
                 Text "TODO" :> Web.INode
                 Span [] :> _
@@ -35,6 +37,6 @@ module Site =
     [<Website>]
     let Main =
         Application.SinglePage (fun ctx ->
-            Content.WithTemplate Template { title = "WebSharper.Html Tests"; body = Body }
+            Content.WithTemplate Template { title = "WebSharper.Html Tests"; body = Body ctx }
 //            Content.Page(Title = "WebSharper.Html Tests", Body = Body)
         )
