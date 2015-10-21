@@ -44,7 +44,7 @@ module Html =
     and Attribute =
         {
             Name : string
-            Value : Core.Metadata.Info -> string
+            Value : string
             Annotation : option<IRequiresResources>
         }
 
@@ -52,13 +52,17 @@ module Html =
 
             member this.IsAttribute = true
 
+            member this.AttributeValue = Some this.Value
+
+            member this.Name = Some this.Name
+
             member this.Requires =
                 match this.Annotation with
                 | None -> Seq.empty
                 | Some a -> a.Requires
 
             member this.Write(meta, w) =
-                w.WriteAttribute(this.Name, this.Value meta)
+                w.WriteAttribute(this.Name, this.Value)
 
             member this.Encode(meta, json) =
                 []
@@ -77,6 +81,19 @@ module Html =
                 match this with
                 | INodeContent n -> n.IsAttribute
                 | _ -> false
+
+            member this.AttributeValue =
+                match this with
+                | INodeContent n -> n.AttributeValue
+                | _ -> None
+
+            member this.Name =
+                match this with
+                | INodeContent n -> n.Name
+                | TagContent tc -> Some tc.Name
+                | TextContent _
+                | VerbatimContent _
+                | CommentContent _ -> None
 
             member this.Requires =
                 match this with
@@ -181,7 +198,7 @@ module Html =
     let NewAttr name value =
         {
             Name = name
-            Value = fun _ -> value
+            Value = value
             Annotation = None
         }
 
