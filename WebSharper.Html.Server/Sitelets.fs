@@ -18,7 +18,6 @@ module Content =
 
     module H = WebSharper.Html.Server.Html
     module M = WebSharper.Core.Metadata
-    module R = WebSharper.Core.Reflection
     module J = WebSharper.Core.Json
     module XS = IntelliFactory.Xml.SimpleXml
     module XT = IntelliFactory.Xml.Templating
