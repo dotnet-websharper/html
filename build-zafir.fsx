@@ -22,7 +22,7 @@ let server =
             [
                 r.Assembly("System.Xml")
                 r.Assembly("System.Xml.Linq")
-                r.NuGet("IntelliFactory.Xml").Reference()
+                r.NuGet("IntelliFactory.Xml").ForceFoundVersion().Reference()
             ])
 
 let tests =
