@@ -62,7 +62,7 @@ module Html =
                 | Some a -> a.Requires
 
             member this.Write(meta, w) =
-                w.WriteAttribute(this.Name, this.Value)
+                w.WriteAttribute(this.Name, this.Value, true)
 
             member this.Encode(meta, json) =
                 []
