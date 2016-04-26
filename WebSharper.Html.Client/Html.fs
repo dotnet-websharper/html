@@ -124,12 +124,11 @@ module internal Implementation =
 
             [<JavaScript>]
             member this.OnLoad node f =
-                JQuery.Of(node).Ready(f).Ignore
+                JQuery.Of(node).Ready(fun () -> f()).Ignore
 
             [<JavaScript>]
             member this.OnDocumentReady f =
-                JQuery.Of(JS.Document).Ready(f).Ignore
-
+                JQuery.Of(JS.Document).Ready(fun () -> f()).Ignore
 
     [<JavaScript>]
     let private HtmlProvider = new JQueryHtmlProvider()
