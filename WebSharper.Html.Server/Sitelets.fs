@@ -10,6 +10,7 @@ open WebSharper.Html.Server
 module Content =
     open System
     open System.Collections.Generic
+    open System.Collections.Concurrent
     open System.Text.RegularExpressions
     open System.Web
 
@@ -149,6 +150,10 @@ module Content =
         watcher.Changed.Add(fun _ -> recompile ())
         watcher :> System.IDisposable
 
+    let memoize f =
+        let d = ConcurrentDictionary()
+        fun x -> d.GetOrAdd(x, valueFactory = System.Func<_,_>(f))
+
     [<Sealed>]
     type Template<'T>(getBasicTemplate, getPageTemplate, holes: Map<string,Hole<'T>>, controls: Queue<_>) =
 
@@ -174,16 +179,6 @@ module Content =
 
         let getBasicTemplate' = lazy getBasicTemplate holes
         let getPageTemplate' = lazy getPageTemplate holes
-
-        static let memoize f =
-            let d = Dictionary()
-            fun x ->
-                match d.TryGetValue(x) with
-                | true, y -> y
-                | _ ->
-                    let y = f x
-                    d.[x] <- y
-                    y
 
         static let getTemplate freq (path: string) (parse: string -> _) =
             match freq with
