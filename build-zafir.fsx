@@ -11,6 +11,7 @@ let bt =
 let client =
     bt.Zafir.Library("WebSharper.Html.Client")
         .SourcesFromProject()
+        .WithSourceMap()
         .Embed([])
         .References(fun r -> [])
 
@@ -28,6 +29,7 @@ let server =
 let tests =
     bt.Zafir.SiteletWebsite("WebSharper.Html.Tests")
         .SourcesFromProject()
+        .WithSourceMap()
         .Embed([])
         .References(fun r ->
             [
