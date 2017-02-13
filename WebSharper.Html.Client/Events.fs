@@ -90,7 +90,7 @@ module Events =
 
         [<JavaScript>]
         member private this.OnMouse<'T when 'T :> Pagelet> name (f: 'T -> MouseEvent -> unit) (el: 'T)  =
-            JQuery.Of(el.Body).Bind(name, fun _ (ev: JE) ->
+            JQuery.Of(el.Body).On(name, fun _ (ev: JE) ->
                 f el {X = ev.PageX; Y = ev.PageY; Event = ev.AsDomEvent :?> _}
             ).Ignore
 
@@ -98,15 +98,15 @@ module Events =
 
             [<JavaScript>]
             member this.OnEvent ev f el =
-                JQuery.Of(el.Body).Bind(ev, fun _ ev -> f el ev.AsDomEvent).Ignore
+                JQuery.Of(el.Body).On(ev, fun _ ev -> f el ev.AsDomEvent).Ignore
 
             [<JavaScript>]
             member this.OnBlur f el  =
-                JQuery.Of(el.Body).Bind("blur", fun _ ev -> f el ev.AsDomEvent).Ignore
+                JQuery.Of(el.Body).On("blur", fun _ ev -> f el ev.AsDomEvent).Ignore
 
             [<JavaScript>]
             member this.OnChange f el =
-                JQuery.Of(el.Body).Bind("change", fun _ ev -> f el ev.AsDomEvent).Ignore
+                JQuery.Of(el.Body).On("change", fun _ ev -> f el ev.AsDomEvent).Ignore
 
             [<JavaScript>]
             member this.OnClick f el =
@@ -142,7 +142,7 @@ module Events =
 
             [<JavaScript>]
             member this.OnKeyDown f el =
-                JQuery.Of(el.Body).Bind("keydown", fun _ (ev: JE) ->
+                JQuery.Of(el.Body).On("keydown", fun _ (ev: JE) ->
                     f el {KeyCode = ev?keyCode; Event = ev.AsDomEvent :?> _}
                 ).Ignore
 
@@ -154,41 +154,41 @@ module Events =
 
             [<JavaScript>]
             member this.OnKeyUp f el  =
-                JQuery.Of(el.Body).Bind("keyup", fun _ (ev: JE) ->
+                JQuery.Of(el.Body).On("keyup", fun _ (ev: JE) ->
                     f el {KeyCode = ev?keyCode; Event = ev.AsDomEvent :?> _}
                 ).Ignore
 
             [<JavaScript>]
             member this.OnFocus f el =
-                JQuery.Of(el.Body).Bind("focus", fun _ ev -> f el ev.AsDomEvent).Ignore
+                JQuery.Of(el.Body).On("focus", fun _ ev -> f el ev.AsDomEvent).Ignore
 
             [<JavaScript>]
             member this.OnLoad f el =
-                JQuery.Of(el.Body).Bind("load", fun _ ev -> f el ev.AsDomEvent).Ignore
+                JQuery.Of(el.Body).On("load", fun _ ev -> f el ev.AsDomEvent).Ignore
 
             [<JavaScript>]
             member this.OnUnLoad f el =
-                JQuery.Of(el.Body).Bind("unload", fun _ ev -> f el ev.AsDomEvent).Ignore
+                JQuery.Of(el.Body).On("unload", fun _ ev -> f el ev.AsDomEvent).Ignore
 
             [<JavaScript>]
             member this.OnResize f el =
-                JQuery.Of(el.Body).Bind("resize", fun _ ev -> f el ev.AsDomEvent).Ignore
+                JQuery.Of(el.Body).On("resize", fun _ ev -> f el ev.AsDomEvent).Ignore
 
             [<JavaScript>]
             member this.OnScroll f el =
-                JQuery.Of(el.Body).Bind("scroll", fun _ ev -> f el ev.AsDomEvent).Ignore
+                JQuery.Of(el.Body).On("scroll", fun _ ev -> f el ev.AsDomEvent).Ignore
 
             [<JavaScript>]
             member this.OnSelect f el =
-                JQuery.Of(el.Body).Bind("select", fun _ ev -> f el ev.AsDomEvent).Ignore
+                JQuery.Of(el.Body).On("select", fun _ ev -> f el ev.AsDomEvent).Ignore
 
             [<JavaScript>]
             member this.OnSubmit f el =
-                JQuery.Of(el.Body).Bind("submit", fun _ ev -> f el ev.AsDomEvent).Ignore
+                JQuery.Of(el.Body).On("submit", fun _ ev -> f el ev.AsDomEvent).Ignore
 
             [<JavaScript>]
             member this.OnError f el =
-                JQuery.Of(el.Body).Bind("error", fun _ ev -> f el ev.AsDomEvent).Ignore
+                JQuery.Of(el.Body).On("error", fun _ ev -> f el ev.AsDomEvent).Ignore
 
 /// Provides aliases to the commonly used events.
 [<AutoOpen>]
