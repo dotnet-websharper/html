@@ -44,6 +44,9 @@ type Pagelet() =
 
 module Interfaces =
 
+#if ZAFIR
+    [<Name "">]
+#endif
     /// Interface for required HTML/DOM functionality.
     type IHtmlProvider =
 
