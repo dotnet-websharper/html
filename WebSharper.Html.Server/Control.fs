@@ -39,4 +39,5 @@ type Control() as this =
         |> ignore
 
     override this.Render writer =
-        elt.Value.Write(Shared.Metadata, writer)
+        let ctx = Remoting.GetContext()
+        elt.Value.Write(ctx, writer)

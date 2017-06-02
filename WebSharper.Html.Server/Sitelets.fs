@@ -13,6 +13,7 @@ module Content =
     open System.Collections.Concurrent
     open System.Text.RegularExpressions
     open System.Web
+    open WebSharper.Sitelets
 
     type private Func<'A,'B> = System.Func<'A,'B>
     type private Writer = HtmlTextWriter -> unit
@@ -276,7 +277,7 @@ module Content =
         member this.CheckPageTemplate(root: string) =
             ignore (getPageTemplate holes root ())
 
-        member this.Run(env: Content.Env, x: Async<'T>, ?root: string) : Async<XS.Element> =
+        member this.Run(ctx: Context<_>, x: Async<'T>, ?root: string) : Async<XS.Element> =
             let controls = Queue(controls)
             let extra = Dictionary()
             async {
@@ -292,9 +293,9 @@ module Content =
                         use tw = new StringWriter()
                         use w = new HtmlTextWriter(tw, " ")
                         for c in children do
-                            c.Write(env.Meta, w)
+                            c.Write(ctx, w)
                         XS.CDataNode (tw.ToString()) :> XS.INode
-            let res = env.GetSeparateResourcesAndScripts controls
+            let res = ctx.GetSeparateResourcesAndScripts controls
             let tpl = getPageTemplate'.Value (defaultArg root ".") ()
             if tpl.Holes |> Seq.exists (fun h -> let h = h.ToUpperInvariant() in h = STYLES || h = META) then
                 extra.[SCRIPTS] <- XS.CDataNode res.Scripts :> XS.INode
@@ -307,7 +308,7 @@ module Content =
                 extra = extra
                 value = x
             }
-            |> postProcess env.AppPath
+            |> postProcess ctx.ApplicationPath
             }
 
     let WithTemplateAsync<'Action,'T>
@@ -316,7 +317,7 @@ module Content =
         CustomContentAsync (fun ctx ->
             async {
             template.CheckPageTemplate(ctx.RootFolder)
-            let! xml = template.Run(Content.Env.Create ctx, content, ctx.RootFolder)
+            let! xml = template.Run(ctx, content, ctx.RootFolder)
             return {
                 Status = Http.Status.Ok
                 Headers =

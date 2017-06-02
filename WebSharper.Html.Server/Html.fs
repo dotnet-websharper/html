@@ -52,16 +52,12 @@ module Html =
 
             member this.IsAttribute = true
 
-            member this.AttributeValue = Some this.Value
-
-            member this.Name = Some this.Name
-
             member this.Requires =
                 match this.Annotation with
                 | None -> Seq.empty
                 | Some a -> a.Requires
 
-            member this.Write(meta, w) =
+            member this.Write(_, w) =
                 w.WriteAttribute(this.Name, this.Value, true)
 
             member this.Encode(meta, json) =
@@ -82,19 +78,6 @@ module Html =
                 | INodeContent n -> n.IsAttribute
                 | _ -> false
 
-            member this.AttributeValue =
-                match this with
-                | INodeContent n -> n.AttributeValue
-                | _ -> None
-
-            member this.Name =
-                match this with
-                | INodeContent n -> n.Name
-                | TagContent tc -> Some tc.Name
-                | TextContent _
-                | VerbatimContent _
-                | CommentContent _ -> None
-
             member this.Requires =
                 match this with
                 | TagContent t ->
@@ -108,13 +91,14 @@ module Html =
                 | INodeContent n -> n.Requires
                 | _ -> Seq.empty
 
-            member this.Write(meta, w) =
+            member this.Write(ctx, w) =
+                let meta = ctx.Metadata
 
                 // Renders an element without content and with self
                 // closing tagE.g. <img class="c" />
                 let renderElementWithSelfClosingTag name (attrs: list<INode>) =
                     w.WriteBeginTag(name)
-                    for a in attrs do a.Write(meta, w)
+                    for a in attrs do a.Write(ctx, w)
                     w.Write(HtmlTextWriter.SelfClosingTagEnd)
 
                 // Renders tag with content.
@@ -125,12 +109,12 @@ module Html =
 
                     w.WriteBeginTag(name)
                     for a in attrs do
-                        a.Write(meta, w)
+                        a.Write(ctx, w)
                     w.Write(HtmlTextWriter.TagRightChar)
 
                     // Render contents
                     for content in contents do
-                        content.Write(meta, w)
+                        content.Write(ctx, w)
                     w.WriteEndTag(name)
                 //////////////////////////////////////////////////////////
                 // TODO: replace with content from res when appropriate //
@@ -151,7 +135,7 @@ module Html =
                     comment.Replace("--", " - - ")
                     |> w.Write
                     w.WriteLine "-->"
-                | INodeContent n -> n.Write(meta, w)
+                | INodeContent n -> n.Write(ctx, w)
 
             member this.Encode(meta, json) =
                 match this with
