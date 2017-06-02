@@ -9,8 +9,12 @@ module Client =
     open WebSharper.JavaScript
 
     let Elt (x: string) =
-        Button [Text x]
-        |>! OnClick (fun _ _ -> JS.Alert "Clicked!")
+        let i = Input []
+        Div [
+            i
+            Button [Text x]
+            |>! OnClick (fun _ _ -> JS.Alert ("Clicked! Text: " + i.Value))
+        ]
 
 module Site =
     open WebSharper.Html.Server

@@ -51,6 +51,9 @@ module Events =
             Event : Dom.KeyboardEvent
         }
 
+#if ZAFIR
+    [<Name "">]
+#endif
     /// Interface for event handling implementation
     type IEventSupport =
 
