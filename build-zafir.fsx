@@ -3,20 +3,20 @@ open System.IO
 open IntelliFactory.Build
 
 let bt =
-    BuildTool().PackageId("Zafir.Html")
-        .VersionFrom("Zafir")
+    BuildTool().PackageId("WebSharper.Html")
+        .VersionFrom("WebSharper")
         .WithFSharpVersion(FSharpVersion.FSharp30)
         .WithFramework(fun f -> f.Net40)
 
 let client =
-    bt.Zafir.Library("WebSharper.Html.Client")
+    bt.WebSharper4.Library("WebSharper.Html.Client")
         .SourcesFromProject()
         .WithSourceMap()
         .Embed([])
         .References(fun r -> [])
 
 let server =
-    bt.Zafir.Library("WebSharper.Html.Server")
+    bt.WebSharper4.Library("WebSharper.Html.Server")
         .SourcesFromProject()
         .Embed([])
         .References(fun r ->
@@ -27,7 +27,7 @@ let server =
             ])
 
 let tests =
-    bt.Zafir.SiteletWebsite("WebSharper.Html.Tests")
+    bt.WebSharper4.SiteletWebsite("WebSharper.Html.Tests")
         .SourcesFromProject()
         .WithSourceMap()
         .Embed([])
@@ -45,7 +45,7 @@ bt.Solution [
     bt.NuGet.CreatePackage()
         .Configure(fun c ->
             { c with
-                Title = Some "Zafir.Html"
+                Title = Some "WebSharper.Html"
                 LicenseUrl = Some "http://websharper.com/licensing"
                 ProjectUrl = Some "https://github.com/intellifactory/https://github.com/intellifactory/websharper.html"
                 Description = "Client-side and server-side HTML Combinators for WebSharper (legacy)"
