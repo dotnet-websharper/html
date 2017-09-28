@@ -22,10 +22,10 @@ namespace WebSharper.Html.Server
 open System
 open System.Collections.Generic
 open System.IO
-open System.Web.UI
 open System.Xml
 open WebSharper
 open WebSharper.Web
+type internal HtmlTextWriter = WebSharper.Core.Resources.HtmlTextWriter
 
 /// Provides types for expressing HTML values.
 [<AutoOpen>]

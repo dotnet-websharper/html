@@ -19,6 +19,7 @@ module Client =
 module Site =
     open WebSharper.Html.Server
 
+#if NET461
     type T = { title: string; body: seq<Element> }
 
     let Template =
@@ -44,3 +45,23 @@ module Site =
             Content.WithTemplate Template { title = "WebSharper.Html Tests"; body = Body ctx }
 //            Content.Page(Title = "WebSharper.Html Tests", Body = Body)
         )
+
+#else
+
+    [<Website>]
+    let Main =
+        Application.SinglePage (fun ctx ->
+            Content.Page(
+                Title = "WebSharper.Html Tests",
+                Body =
+                    [
+                        Div [
+                            Text "TODO" :> Web.INode
+                            Span [] :> _
+                            ClientSide <@ Client.Elt "test" @> :> _
+                        ]
+                    ]
+            )
+        )
+
+#endif

@@ -20,6 +20,8 @@
 
 namespace WebSharper.Html.Server.Web
 
+#if NET461
+
 open WebSharper
 open WebSharper.Web
 open WebSharper.Html.Server
@@ -40,4 +42,7 @@ type Control() as this =
 
     override this.Render writer =
         let ctx = Remoting.GetContext()
-        elt.Value.Write(ctx, writer)
+        elt.Value.Write(ctx,
+            new WebSharper.Core.Resources.HtmlTextWriter(writer.InnerWriter))
+
+#endif

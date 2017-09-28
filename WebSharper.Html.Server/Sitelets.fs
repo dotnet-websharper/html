@@ -3,16 +3,18 @@
 #nowarn "44" // Deprecated: Content.CustomContentAsync
 
 open System.IO
-open System.Web.UI
 open WebSharper
 open WebSharper.Html.Server
 
 module Content =
+    type HtmlElement = Html.Element
+
+#if NET461
+
     open System
     open System.Collections.Generic
     open System.Collections.Concurrent
     open System.Text.RegularExpressions
-    open System.Web
     open WebSharper.Sitelets
 
     type private Func<'A,'B> = System.Func<'A,'B>
@@ -24,7 +26,6 @@ module Content =
     module XS = IntelliFactory.Xml.SimpleXml
     module XT = IntelliFactory.Xml.Templating
 
-    type HtmlElement = Html.Element
 
     type Hole<'T> =
         | SH of ('T -> Async<string>)
@@ -336,3 +337,5 @@ module Content =
         (template: Template<'T>)
         (content: 'T) : Async<Content<'Action>> =
         WithTemplateAsync template (async.Return content)
+
+#endif
