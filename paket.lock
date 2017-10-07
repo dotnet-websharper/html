@@ -187,10 +187,10 @@ NUGET
       Microsoft.NETCore.Targets (>= 1.1) - restriction: || (>= dnxcore50) (&& (< monoandroid) (< net45) (>= netstandard1.0) (< netstandard1.3) (< win8) (< wp8) (< wpa81)) (&& (< monotouch) (< net45) (>= netstandard1.3) (< win8) (< wpa81) (< xamarinios) (< xamarinmac) (< xamarintvos) (< xamarinwatchos))
       System.Runtime (>= 4.3) - restriction: || (>= dnxcore50) (&& (< monoandroid) (< net45) (>= netstandard1.0) (< netstandard1.3) (< win8) (< wp8) (< wpa81)) (&& (< monotouch) (< net45) (>= netstandard1.3) (< win8) (< wpa81) (< xamarinios) (< xamarinmac) (< xamarintvos) (< xamarinwatchos))
   remote: https://nuget.intellifactory.com/nuget
-    WebSharper (4.0.194.115-staging)
+    WebSharper (4.0.194.122-staging)
       Mono.Cecil (>= 0.10.0-beta6 < 0.11.0-beta)
-    WebSharper.FSharp (4.0.194.115-staging)
-      WebSharper (4.0.194.115-staging)
+    WebSharper.FSharp (4.0.194.122-staging)
+      WebSharper (4.0.194.122-staging)
 
 GROUP build
 RESTRICTION: == net45
@@ -203,7 +203,7 @@ NUGET
     FSharp.Core (4.2.3)
     Mono.Cecil (0.10.0-beta6)
     Newtonsoft.Json (10.0.3)
-    Paket.Core (5.112.1)
+    Paket.Core (5.113)
       Chessie (>= 0.6)
       FSharp.Compiler.Tools
       FSharp.Core
@@ -211,4 +211,4 @@ NUGET
       Newtonsoft.Json
 GITHUB
   remote: intellifactory/websharper
-    tools/WebSharper.Fake.fsx (5cf15114c4eef6f096d988736d5ee31224962aa8)
+    tools/WebSharper.Fake.fsx (7931f2c6b2143e70a7f56169b64bbfc9cfe3c5f1)
