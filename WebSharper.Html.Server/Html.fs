@@ -52,10 +52,10 @@ module Html =
 
             member this.IsAttribute = true
 
-            member this.Requires =
+            member this.Requires(meta) =
                 match this.Annotation with
                 | None -> Seq.empty
-                | Some a -> a.Requires
+                | Some a -> a.Requires(meta)
 
             member this.Write(_, w) =
                 w.WriteAttribute(this.Name, this.Value, true)
@@ -78,17 +78,17 @@ module Html =
                 | INodeContent n -> n.IsAttribute
                 | _ -> false
 
-            member this.Requires =
+            member this.Requires(meta) =
                 match this with
                 | TagContent t ->
                     Seq.concat [|
                         (match t.Annotation with
                         | None -> Seq.empty
-                        | Some a -> a.Requires)
-                        t.Contents |> Seq.collect (fun x -> x.Requires)
-                        t.Attributes |> Seq.collect (fun x -> x.Requires)
+                        | Some a -> a.Requires(meta))
+                        t.Contents |> Seq.collect (fun x -> x.Requires(meta))
+                        t.Attributes |> Seq.collect (fun x -> x.Requires(meta))
                     |]
-                | INodeContent n -> n.Requires
+                | INodeContent n -> n.Requires(meta)
                 | _ -> Seq.empty
 
             member this.Write(ctx, w) =

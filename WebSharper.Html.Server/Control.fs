@@ -35,7 +35,8 @@ type Control() as this =
     abstract member Element : Html.Element
 
     override this.OnLoad _ =
-        ScriptManager.Find(base.Page).Register None elt.Value
+        ScriptManager.Find(base.Page)
+            .Register(None, elt.Value, Shared.Metadata, Shared.Json)
         |> ignore
 
     override this.Render writer =
