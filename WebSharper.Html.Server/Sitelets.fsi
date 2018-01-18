@@ -10,6 +10,8 @@ module Content =
     /// A type of HTML elements.
     type HtmlElement = Html.Element
 
+#if NET461
+
     module Template =
 
         /// Defines how frequently a template should be loaded from disk.
@@ -94,3 +96,5 @@ module Content =
         template: Template<'T> ->
         content: 'T ->
         Async<Content<'Action>>
+
+#endif
