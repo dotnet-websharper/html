@@ -2,8 +2,10 @@ version 5.108.0
 source https://api.nuget.org/v3/index.json
 source https://nuget.intellifactory.com/nuget username: "%IF_USER%" password: "%IF_PASS%"
 
-nuget WebSharper staging
-nuget WebSharper.FSharp staging
+storage: none
+
+nuget WebSharper >= 4.2 alpha
+nuget WebSharper.FSharp >= 4.2 alpha
 nuget IntelliFactory.Xml 
 
 group build
