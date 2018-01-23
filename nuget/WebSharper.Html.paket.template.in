@@ -20,8 +20,8 @@ files
     ../WebSharper.Html.Server/bin/Release/netstandard2.0/WebSharper.Html.Server.dll ==> lib/netstandard2.0
     ../WebSharper.Html.Server/bin/Release/netstandard2.0/WebSharper.Html.Server.xml ==> lib/netstandard2.0
 dependencies
-        WebSharper LOCKEDVERSION
-        IntelliFactory.Xml LOCKEDVERSION
+        WebSharper ~> LOCKEDVERSION/3
+        IntelliFactory.Xml ~> LOCKEDVERSION/3
 frameworkAssemblies
         System.Web
         System.Xml
