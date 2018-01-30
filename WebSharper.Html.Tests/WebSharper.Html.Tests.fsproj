@@ -15,5 +15,6 @@
     <ProjectReference Include="../WebSharper.Html.Client\WebSharper.Html.Client.fsproj" />
     <ProjectReference Include="../WebSharper.Html.Server\WebSharper.Html.Server.fsproj" />
   </ItemGroup>
+  <Import Project="..\paket-files\wsbuild\github.com\dotnet-websharper\build-script\WebSharper.Fake.targets" Condition="Exists('..\paket-files\wsbuild\github.com\dotnet-websharper\build-script\WebSharper.Fake.targets')" />
   <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>
