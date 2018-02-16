@@ -11,8 +11,8 @@ description
 tags
     Web JavaScript F# C#
 files
-    ../WebSharper.Html.Client/bin/Release/netstandard2.0/WebSharper.Html.Client.dll ==> lib/net461
-    ../WebSharper.Html.Client/bin/Release/netstandard2.0/WebSharper.Html.Client.xml ==> lib/net461
+    ../WebSharper.Html.Client/bin/Release/net461/WebSharper.Html.Client.dll ==> lib/net461
+    ../WebSharper.Html.Client/bin/Release/net461/WebSharper.Html.Client.xml ==> lib/net461
     ../WebSharper.Html.Client/bin/Release/netstandard2.0/WebSharper.Html.Client.dll ==> lib/netstandard2.0
     ../WebSharper.Html.Client/bin/Release/netstandard2.0/WebSharper.Html.Client.xml ==> lib/netstandard2.0
     ../WebSharper.Html.Server/bin/Release/net461/WebSharper.Html.Server.dll ==> lib/net461
