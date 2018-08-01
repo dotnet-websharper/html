@@ -6,6 +6,7 @@ open System.IO
 open WebSharper
 open WebSharper.Html.Server
 
+[<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
 module Content =
     type HtmlElement = Html.Element
 

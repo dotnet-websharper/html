@@ -5,6 +5,7 @@ open WebSharper
 open WebSharper.Html.Server
 
 /// Sitelets Content functions for Html.Server.
+[<CompilationRepresentation(CompilationRepresentationFlags.ModuleSuffix)>]
 module Content =
 
     /// A type of HTML elements.
