@@ -3,9 +3,9 @@ NUGET
   remote: https://api.nuget.org/v3/index.json
     IntelliFactory.Xml (0.6.64.1)
   remote: https://daily.websharper.com/nuget
-    WebSharper (4.5.1.304)
-    WebSharper.FSharp (4.5.1.304)
-      WebSharper (4.5.1.304)
+    WebSharper (4.5.2.308)
+    WebSharper.FSharp (4.5.2.308)
+      WebSharper (4.5.2.308)
 
 GROUP build
 RESTRICTION: == net45
