@@ -2,4 +2,5 @@
 
 Client-side and server-side HTML Combinators for WebSharper (legacy)
 
-* [Source Repository](https://github.com/intellifactory/websharper.html)
+* [Documentation](https://developers.websharper.com/docs/v3.x/fs/html-combinators)
+* [Source Repository](https://github.com/dotnet-websharper/html)
