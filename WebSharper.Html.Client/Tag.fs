@@ -21,6 +21,7 @@
 namespace WebSharper.Html.Client
 
 open WebSharper
+open WebSharper.JavaScript
 open WebSharper.Html.Client.Interfaces
 
 /// Deprecated HTML combinators
@@ -95,6 +96,10 @@ type TagBuilder [<JavaScript>](HtmlProvider: IHtmlProvider) =
         for pl in children do
             el.Append (pl :> Pagelet)
         el
+
+    [<JavaScript>]
+    member this.OfDom (dom: Dom.Element) : Element =
+        Element.New (HtmlProvider, dom)
 
     /// Creates a Text node.
     [<JavaScript>]

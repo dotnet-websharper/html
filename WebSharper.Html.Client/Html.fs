@@ -171,6 +171,10 @@ module Tags =
     [<JavaScript>]
     let Text x = Tags.Text x
 
+    [<Inline>]
+    [<JavaScript>]
+    let OfDom x = Tags.OfDom x
+
     // {{ tag normal
     [<Inline>]
     [<JavaScript>]

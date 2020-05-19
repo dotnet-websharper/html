@@ -50,6 +50,13 @@ type Element (HtmlProvider : IHtmlProvider) =
         el.IsRendered <- false
         el
 
+    static member New(html: IHtmlProvider, dom: Dom.Element) : Element =
+        let el = new Element(html)
+        el.RenderInternal <- ignore
+        el.Dom <- dom
+        el.IsRendered <- false
+        el
+
     override this.Render () =
         if not this.IsRendered then
             this.RenderInternal ()
