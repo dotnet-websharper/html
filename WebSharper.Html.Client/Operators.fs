@@ -69,5 +69,8 @@ module Operators =
     [<Inline "document.getElementById($name)">]
     let ById (name: string) : Dom.Element = Unchecked.defaultof<_>()
 
+    [<JavaScript>]
+    [<Inline>]
+    let GetDom (el: Element) = el.Dom
 
 
