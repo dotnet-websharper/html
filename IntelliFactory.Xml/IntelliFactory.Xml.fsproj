@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{8dffd73c-7f42-445e-8608-9191864eea25}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <Name>IntelliFactory.Xml</Name>
+    <OutputPath>../build/net45</OutputPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="SimpleHtml.fsi" />
+    <Compile Include="SimpleHtml.fs" />
+    <Compile Include="SimpleXml.fsi" />
+    <Compile Include="SimpleXml.fs" />
+    <Compile Include="Templating.fsi" />
+    <Compile Include="Templating.fs" />
+  </ItemGroup>
+  <Import Project="..\build\net40\$(Name).proj" />
+  <Import Project="..\msbuild\FSharp.targets" />
+</Project>
