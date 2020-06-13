@@ -8,7 +8,6 @@ storage: none
 nuget FSharp.Core ~> 4.2.0
 nuget WebSharper >= 4.2 prerelease
 nuget WebSharper.FSharp >= 4.2 prerelease
-nuget IntelliFactory.Xml 
 
 group build
     framework: net45

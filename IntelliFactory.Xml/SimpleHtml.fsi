@@ -12,7 +12,7 @@
 /// Provides utilities for pretty-printing HTML5-flavored HTML.
 module internal IntelliFactory.Xml.SimpleHtml
 
-open System.Web.UI
+open WebSharper.Core.Resources
 
 [<Sealed>]
 type Node

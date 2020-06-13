@@ -19,7 +19,7 @@ open System.Collections.Generic
 open System.IO
 open System.Xml
 open System.Xml.Linq
-open System.Web.UI
+open WebSharper.Core.Resources
 
 /// Represents qualified names.
 [<Sealed>]

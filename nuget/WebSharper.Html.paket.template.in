@@ -11,6 +11,10 @@ description
 tags
     Web JavaScript F# C#
 files
+    ../WebSharper.Html.Client/bin/Release/net461/IntelliFactory.Xml.dll ==> lib/net461
+    ../WebSharper.Html.Client/bin/Release/net461/IntelliFactory.Xml.xml ==> lib/net461
+    ../WebSharper.Html.Client/bin/Release/netstandard2.0/IntelliFactory.Xml.dll ==> lib/netstandard2.0
+    ../WebSharper.Html.Client/bin/Release/netstandard2.0/IntelliFactory.Xml.xml ==> lib/netstandard2.0
     ../WebSharper.Html.Client/bin/Release/net461/WebSharper.Html.Client.dll ==> lib/net461
     ../WebSharper.Html.Client/bin/Release/net461/WebSharper.Html.Client.xml ==> lib/net461
     ../WebSharper.Html.Client/bin/Release/netstandard2.0/WebSharper.Html.Client.dll ==> lib/netstandard2.0
@@ -21,7 +25,6 @@ files
     ../WebSharper.Html.Server/bin/Release/netstandard2.0/WebSharper.Html.Server.xml ==> lib/netstandard2.0
 dependencies
         WebSharper ~> LOCKEDVERSION/3
-        IntelliFactory.Xml ~> LOCKEDVERSION/3
 frameworkAssemblies
         System.Web
         System.Xml

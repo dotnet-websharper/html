@@ -1,17 +1,19 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WebSharper.Html.Tests", "WebSharper.Html.Tests\WebSharper.Html.Tests.fsproj", "{756D6B15-82FC-4B69-8721-D5B2170B0465}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "WebSharper.Html.Tests", "WebSharper.Html.Tests\WebSharper.Html.Tests.fsproj", "{756D6B15-82FC-4B69-8721-D5B2170B0465}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WebSharper.Html.Client", "WebSharper.Html.Client\WebSharper.Html.Client.fsproj", "{93167253-1F52-46B0-911E-3DC03ACC1CBF}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "WebSharper.Html.Client", "WebSharper.Html.Client\WebSharper.Html.Client.fsproj", "{93167253-1F52-46B0-911E-3DC03ACC1CBF}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "WebSharper.Html.Server", "WebSharper.Html.Server\WebSharper.Html.Server.fsproj", "{A367F2B9-B9C4-4166-9085-F0079CB8B080}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "WebSharper.Html.Server", "WebSharper.Html.Server\WebSharper.Html.Server.fsproj", "{A367F2B9-B9C4-4166-9085-F0079CB8B080}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tools", "tools", "{02C3A3F9-24E7-4A5B-9899-5598D1CB063B}"
 	ProjectSection(SolutionItems) = preProject
 		tools\UpdateElems.fsx = tools\UpdateElems.fsx
 	EndProjectSection
+EndProject
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "IntelliFactory.Xml", "IntelliFactory.Xml\IntelliFactory.Xml.fsproj", "{34B15A2A-C63E-41B4-AA2F-C5A92903C25B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,8 +33,15 @@ Global
 		{A367F2B9-B9C4-4166-9085-F0079CB8B080}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A367F2B9-B9C4-4166-9085-F0079CB8B080}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A367F2B9-B9C4-4166-9085-F0079CB8B080}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34B15A2A-C63E-41B4-AA2F-C5A92903C25B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34B15A2A-C63E-41B4-AA2F-C5A92903C25B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34B15A2A-C63E-41B4-AA2F-C5A92903C25B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34B15A2A-C63E-41B4-AA2F-C5A92903C25B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B4067E6E-D629-45E3-B250-8B315C24A610}
 	EndGlobalSection
 EndGlobal

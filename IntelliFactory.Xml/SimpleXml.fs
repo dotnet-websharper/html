@@ -18,7 +18,7 @@ module IntelliFactory.Xml.SimpleXml
 open System
 open System.Collections.Generic
 open System.IO
-open System.Web.UI
+open WebSharper.Core.Resources
 open System.Xml
 open System.Xml.Linq
 

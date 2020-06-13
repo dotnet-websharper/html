@@ -1,10 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <ProjectGuid>{8dffd73c-7f42-445e-8608-9191864eea25}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <Name>IntelliFactory.Xml</Name>
-    <OutputPath>../build/net45</OutputPath>
+    <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="SimpleHtml.fsi" />
@@ -14,6 +11,10 @@
     <Compile Include="Templating.fsi" />
     <Compile Include="Templating.fs" />
   </ItemGroup>
-  <Import Project="..\build\net40\$(Name).proj" />
-  <Import Project="..\msbuild\FSharp.targets" />
+  <ItemGroup>
+    <Reference Include="System.Web" Condition="$(TargetFramework.StartsWith('net4'))" />
+    <Reference Include="System.Xml" Condition="$(TargetFramework.StartsWith('net4'))" />
+    <Reference Include="System.Xml.Linq" Condition="$(TargetFramework.StartsWith('net4'))" />
+  </ItemGroup>
+  <Import Project="..\.paket\Paket.Restore.targets" />
 </Project>

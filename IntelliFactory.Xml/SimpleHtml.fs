@@ -13,7 +13,7 @@ module internal IntelliFactory.Xml.SimpleHtml
 
 open System
 open System.Collections.Generic
-open System.Web.UI
+open WebSharper.Core.Resources
 
 type Flags =
     | None = 0
@@ -116,12 +116,12 @@ and renderElement ignoreNS (h: HtmlTextWriter) (x: Element) =
                 | Flags.NoTextContent, Foreign -> true
                 | _ -> false
             if indentChildren then
-                h.Indent <- h.Indent + 1
+                // h.Indent <- h.Indent + 1
                 h.WriteLine()
                 for c in x.Children do
                     renderNode ignoreNS h c
                     h.WriteLine()
-                h.Indent <- h.Indent - 1
+                // h.Indent <- h.Indent - 1
             else
                 for c in x.Children do
                     renderNode ignoreNS h c
