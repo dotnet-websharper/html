@@ -9,4 +9,3 @@
 /tools/packages/
 /.fake/
 /paket-files/
-nuget/*.paket.template
