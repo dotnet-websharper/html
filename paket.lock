@@ -398,32 +398,13 @@ NUGET
       Microsoft.NETCore.Platforms (>= 1.1) - restriction: || (&& (== net461) (< net451)) (== netstandard2.0)
       Microsoft.NETCore.Targets (>= 1.1) - restriction: || (&& (== net461) (< net451)) (== netstandard2.0)
       System.Runtime (>= 4.3) - restriction: || (&& (== net461) (< net451)) (== netstandard2.0)
-  remote: https://daily.websharper.com/nuget
     WebSharper (4.7.0.423)
       FSharp.Core (>= 4.2.3)
     WebSharper.FSharp (4.7.0.423)
       WebSharper (4.7.0.423)
 
-GROUP build
-RESTRICTION: == net45
-NUGET
-  remote: https://api.nuget.org/v3/index.json
-    Chessie (0.6)
-      FSharp.Core
-    FAKE (5.16)
-    FSharp.Compiler.Tools (10.2.3)
-    FSharp.Core (5.0)
-    Mono.Cecil (0.11.3)
-    Newtonsoft.Json (12.0.3)
-    Paket.Core (5.242.2)
-      Chessie (>= 0.6)
-      FSharp.Compiler.Tools
-      FSharp.Core (> 4.3)
-      Mono.Cecil (>= 0.10.0-beta6)
-      Newtonsoft.Json
-
 GROUP wsbuild
 
 GIT
   remote: https://github.com/dotnet-websharper/build-script
-     (90eb54d1b2a21f568f22409b47814a7cf215900d)
+     (7155f2cb840374092cbe8eb2c8f1399c5c97f4af)
